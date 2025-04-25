@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="display-4">Welcome to the Library Management System</h1>
+        <p class="lead">Manage your library's books, authors, loans, and members efficiently.</p>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Books</h5>
+                    <p class="card-text">View and manage all books in the library.</p>
+                    <a href="/Book" class="btn btn-primary">Go to Books</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Authors</h5>
+                    <p class="card-text">View and manage all authors in the library.</p>
+                    <a href="/Author" class="btn btn-primary">Go to Authors</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Loans</h5>
+                    <p class="card-text">View and manage all loan records.</p>
+                    <a href="/Loan" class="btn btn-primary">Go to Loans</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Members</h5>
+                    <p class="card-text">View and manage all library members.</p>
+                    <a href="/Member" class="btn btn-primary">Go to Members</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        margin-bottom: 20px;
+    }
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+</style>
