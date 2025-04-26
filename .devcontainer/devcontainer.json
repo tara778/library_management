@@ -2,24 +2,24 @@
     "name": "Library Management System",
     "dockerFile": "Dockerfile",
     "forwardPorts": [5000, 5001],
-    "remoteUser": "root",  // Changed from vscode to root
     "customizations": {
-      "vscode": {
-        "extensions": [
-          "ms-dotnettools.csharp",
-          "ms-dotnettools.vscode-dotnet-runtime",
-          "ms-azuretools.vscode-docker",
-          "editorconfig.editorconfig"
-        ],
-        "settings": {
-          "dotnet.server.useOmnisharp": true
+        "vscode": {
+            "extensions": [
+                "ms-dotnettools.csharp",
+                "ms-dotnettools.vscode-dotnet-runtime",
+                "ms-azuretools.vscode-docker",
+                "editorconfig.editorconfig"
+            ],
+            "settings": {
+                "dotnet.server.useOmnisharp": true
+            }
         }
-      }
     },
     "postCreateCommand": "dotnet restore && dotnet tool restore",
+    "remoteUser": "vscode",
     "features": {
-      "ghcr.io/devcontainers/features/dotnet:1": {
-        "version": "9.0"
-      }
+        "ghcr.io/devcontainers/features/dotnet:1": {
+            "version": "9.0"
+        }
     }
   }
