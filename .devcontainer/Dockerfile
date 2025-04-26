@@ -13,16 +13,17 @@ RUN apt-get update && \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Create and set working directory
-WORKDIR /workspace
-
-# Switch to vscode user
-USER vscode
-
-# Install .NET tools
+# Install .NET tools as root first
 RUN dotnet tool install --global dotnet-ef && \
     dotnet tool install --global dotnet-aspnet-codegenerator
 
-# Set correct permissions
-RUN mkdir -p /home/vscode/.dotnet/tools && \
-    chown -R vscode:vscode /home/vscode/.dotnet
+# Create and set working directory
+WORKDIR /workspace
+
+# Create vscode user and set permissions
+RUN useradd -ms /bin/bash vscode && \
+    mkdir -p /home/vscode/.dotnet/tools && \
+    chown -R vscode:vscode /home/vscode
+
+# Switch to vscode user
+USER vscode
