@@ -4,7 +4,8 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0
 # Set environment variables
 ENV DOTNET_CLI_TELEMETRY_OPTOUT=1 \
     DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true \
-    PATH="${PATH}:/home/vscode/.dotnet/tools"
+    ASPNETCORE_ENVIRONMENT=Development \
+    PATH="${PATH}:/root/.dotnet/tools"
 
 # Install necessary packages
 RUN apt-get update && \
@@ -16,13 +17,14 @@ RUN apt-get update && \
 # Create and set working directory
 WORKDIR /workspace
 
-# Switch to vscode user
-USER vscode
+# Create vscode user and set permissions
+RUN groupadd -g 1000 vscode && \
+    useradd -u 1000 -g vscode -m vscode && \
+    chown -R vscode:vscode /workspace
 
-# Install .NET tools
+# Install .NET tools as root (they'll be available to all users)
 RUN dotnet tool install --global dotnet-ef && \
     dotnet tool install --global dotnet-aspnet-codegenerator
 
-# Set correct permissions
-RUN mkdir -p /home/vscode/.dotnet/tools && \
-    chown -R vscode:vscode /home/vscode/.dotnet
+# Switch to vscode user
+USER vscode
